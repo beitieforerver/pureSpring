@@ -9,7 +9,7 @@ import java.sql.SQLException;
 @Component
 public class ConnectionUtil {
     /**
-     * @Description: 创建一个当前线程的ThreadLocal
+     * @Description: 创建当前线程的ThreadLocal
      */
     private ThreadLocal<Connection> t=new ThreadLocal<>();
     @Autowired

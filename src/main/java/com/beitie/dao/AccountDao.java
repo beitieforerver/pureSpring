@@ -1,7 +1,6 @@
 package com.beitie.dao;
 
 import com.beitie.pojo.Account;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 public interface AccountDao {

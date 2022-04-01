@@ -15,6 +15,7 @@ public class BeanFactory {
     private TransactionUtil transactionUtil;
     public AccountService createAccountServiceProxy(){
         return (AccountService)Enhancer.create(AccountService.class, new MethodInterceptor() {
+            @Override
             public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
                 Object returnValule = null;
                 transactionUtil.beginTransaction();

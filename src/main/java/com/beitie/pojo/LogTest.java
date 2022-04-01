@@ -1,6 +1,9 @@
 package com.beitie.pojo;
-public class LogTest {
+
+import com.beitie.util.LogBean;
+
+public class LogTest extends LogBean {
     public  void printLog(){
-        System.out.println("输出了日志");
+        log.info("输出了日志");
     }
 }

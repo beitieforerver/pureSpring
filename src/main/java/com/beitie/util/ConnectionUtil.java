@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 @Component
 public class ConnectionUtil {
-    //创建一个当前线程的ThreadLocal
-    private ThreadLocal<Connection> t=new ThreadLocal<Connection>();
+    /**
+     * @Description: 创建一个当前线程的ThreadLocal
+     */
+    private ThreadLocal<Connection> t=new ThreadLocal<>();
     @Autowired
     private DataSource dataSource;
 

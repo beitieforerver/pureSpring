@@ -4,45 +4,45 @@ import com.beitie.dao.AccountDao;
 import com.beitie.pojo.Account;
 import com.beitie.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service("accountService")
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends  BaseServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
+    @Override
     public List<Account> findAllAccount() {
         return accountDao.findAllAccount();
     }
-
+    @Override
     public Account findOne(String name) {
         return  accountDao.findByName(name);
     }
-
+    @Override
     public void save(Account account) {
-
+        log.info("数据保存");
     }
-
+    @Override
     public void update(Account account) {
-
+        log.info("数据修改");
     }
-
+    @Override
     public void delete(int id) {
-        System.out.println("删除了数据");
+        log.info("删除了数据");
     }
-
+    @Override
     public void transfer(String sourceName, String destName, float money) {
         Account sourceAcc = accountDao.findByName(sourceName);
         Account destAcc = accountDao.findByName(destName);
 
-        System.out.println(sourceAcc);
-        System.out.println(destAcc);
+        log.info(sourceAcc);
+        log.info(destAcc);
         sourceAcc.setMoney(sourceAcc.getMoney()-money);
         destAcc.setMoney(destAcc.getMoney()+money);
         accountDao.update(sourceAcc);
         accountDao.update(destAcc);
-        System.out.println(accountDao.findAllAccount());
+        log.info(accountDao.findAllAccount());
     }
 
 }

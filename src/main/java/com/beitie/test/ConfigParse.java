@@ -7,7 +7,11 @@ import java.util.Properties;
 
 public class ConfigParse {
     static Properties properties ;
-    static Map<String,String> cachedMap = new HashMap<String, String>();
+    static Map<String,String> cachedMap = new HashMap<>();
+
+    private ConfigParse() {
+    }
+
     static {
         try {
             properties = new Properties();
@@ -19,7 +23,6 @@ public class ConfigParse {
 
 
     public static String getString(String key){
-        String value=cachedMap.get(key);
         if(cachedMap.containsKey(key)){
             return cachedMap.get(key);
         }

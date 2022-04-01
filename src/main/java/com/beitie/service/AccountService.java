@@ -11,4 +11,5 @@ public interface AccountService {
     void update(Account account);
     void delete(int id);
     void transfer(String sourceName,String destName,float money);
+    default void fff(){};
 }

@@ -15,7 +15,7 @@ public class MyBeanFactoryPostprocessor extends LogBean implements BeanFactoryPo
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         log.info("BeanFactoryPostProcessor调用postProcessBeanFactory方法");
-        BeanDefinition bd = beanFactory.getBeanDefinition("person");
-        bd.getPropertyValues().addPropertyValue("phone", "110");
+        BeanDefinition bd = beanFactory.getBeanDefinition("student");
+        bd.getPropertyValues().addPropertyValue("name", "清风");
     }
 }

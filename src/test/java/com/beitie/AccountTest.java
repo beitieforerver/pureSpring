@@ -2,19 +2,21 @@ package com.beitie;
 
 import com.beitie.pojo.Account;
 import com.beitie.service.AccountService;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.File;
 import java.util.List;
 @ComponentScan
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring-simple.xml","classpath:spring-aop.xml"})
 public class AccountTest {
+    @Before
+    public void sldfjlskjflksj(){
+        ClassPathXmlApplicationContext xml =new ClassPathXmlApplicationContext("spring-lifecycle-test.xml");
+    }
     @Autowired
     @Qualifier("proxyAccountService")
     private AccountService accountService;
@@ -36,5 +38,40 @@ public class AccountTest {
     @Test
     public void deleteAccountTest(){
         accountService.delete(1);
+    }
+
+    @Test
+    public void dealList(){
+        deleteFilesByParentPath(new File("D:\\package\\202208081241_"));
+    }
+
+    @Test
+    public void returnTest(){
+        System.out.println(slfjls());
+    }
+    public int slfjls(){
+        int a =0;
+        try {
+            a = 2/0;
+            return a;
+        } catch (Exception e) {
+            a = 3;
+            return a;
+        } finally {
+            a=1;
+            return a;
+        }
+//        return a;
+    }
+    public void deleteFilesByParentPath(File file ){
+        if(file.exists()){
+            if(file.isDirectory()){
+                File[] files = file.listFiles();
+                for (File fileTemp : files) {
+                    deleteFilesByParentPath(fileTemp);
+                }
+            }
+            file.delete();
+        }
     }
 }

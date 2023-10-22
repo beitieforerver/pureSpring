@@ -11,7 +11,7 @@ public class Test {
         ClassPathXmlApplicationContext xml =new ClassPathXmlApplicationContext("spring-lifecycle-test.xml");
        log.info("----启动完成----");
         Person person=xml.getBean("person",Person.class);
-       log.info("获取延迟加载对象student"+person.toString());
+       log.info("获取延迟加载对象person"+person.toString());
         Student student=xml.getBean("student",Student.class);
        log.info("获取加载对象studentPrototype"+student.toString());
         Student studentPrototype=xml.getBean("studentPrototype",Student.class);
